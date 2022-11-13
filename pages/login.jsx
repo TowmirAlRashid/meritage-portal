@@ -43,7 +43,7 @@ export default function Home() {
           sx={{
             width: {
               lg: "60%",
-              md: "50%",
+              md: "45%",
             },
             height: "100%",
             display: {
@@ -73,20 +73,16 @@ export default function Home() {
             }}
           >
             <Typography
-              variant="h2"
+              variant="h1"
               sx={{
                 marginBottom: {
                   lg: "1.8rem",
                   md: "1.5rem",
-                  sm: "1rem",
-                  xs: "1rem",
                 },
                 fontWeight: "600",
                 fontSize: {
                   lg: "60px",
-                  md: "48px",
-                  sm: "36px",
-                  xs: "36px"
+                  md: "40px",
                 },
                 color: "white"
               }}
@@ -174,7 +170,7 @@ export default function Home() {
             height: "100%",
             width: {
               lg: "40%",
-              md: "50%",
+              md: "55%",
               sm: "90%",
               xs: "90%"
             },
@@ -182,110 +178,110 @@ export default function Home() {
             justifyContent: "center",
           }}
         >
-            <Box
-                sx={{
-                    width: "80%",
-                    margin: "3rem auto 2rem",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    lineHeight: "30px",
-                    textAlign: "center"
+          <Box
+              sx={{
+                  width: "80%",
+                  margin: "3rem auto 2rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "center",
+                  lineHeight: "30px",
+                  textAlign: "center"
+                }}
+          >
+              <Box
+                  sx={{
+                      marginBottom: "2.5rem"
                   }}
-            >
-                <Box
-                    sx={{
-                        marginBottom: "2.5rem"
-                    }}
-                >
-                    <Image 
-                        src={Logo}
-                        alt="company logo"
-                    />
-                </Box>
+              >
+                  <Image 
+                      src={Logo}
+                      alt="company logo"
+                  />
+              </Box>
 
-                <Typography
-                    sx={{
-                        fontSize: "24px",
-                        fontWeight: "600",
-                        marginBottom: "0.5rem"
-                    }}
-                >
-                    Log In
-                </Typography>
+              <Typography
+                  sx={{
+                      fontSize: "24px",
+                      fontWeight: "600",
+                      marginBottom: "0.5rem"
+                  }}
+              >
+                  Log In
+              </Typography>
 
-                <Typography
-                    sx={{
-                        fontSize: "16px",
-                        fontWeight: "400",
-                        marginBottom: "2.5rem",
-                        color: "rgba(0, 0, 0, 0.6)"
-                    }}
-                >
-                    Please enter your credentials to login.
-                </Typography>
+              <Typography
+                  sx={{
+                      fontSize: "16px",
+                      fontWeight: "400",
+                      marginBottom: "2.5rem",
+                      color: "rgba(0, 0, 0, 0.6)"
+                  }}
+              >
+                  Please enter your credentials to login.
+              </Typography>
 
-                <Box
-                    component="form"
-                    onSubmit={handleSubmit(onsubmit)}
-                    sx={{
-                        display: "flex",
-                        justifyContent: "center",
-                        flexDirection: "column",
-                        gap: "2rem",
-                        marginBottom: "2rem"
-                    }}
-                >
-                    <Controller
-                        name="login_email"
-                        control={control}
-                        render={({ field }) => {
-                            return (
-                                <TextField 
-                                    id="email" 
-                                    label="Email" 
-                                    variant="outlined"
-                                    {...field} 
-                                    type="email"
-                                />
-                            )
-                        }}
-                    />
+              <Box
+                  component="form"
+                  onSubmit={handleSubmit(onsubmit)}
+                  sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      flexDirection: "column",
+                      gap: "2rem",
+                      marginBottom: "2rem"
+                  }}
+              >
+                  <Controller
+                      name="login_email"
+                      control={control}
+                      render={({ field }) => {
+                          return (
+                              <TextField 
+                                  id="email" 
+                                  label="Email" 
+                                  variant="outlined"
+                                  {...field} 
+                                  type="email"
+                              />
+                          )
+                      }}
+                  />
 
-                    <Controller
-                        name="login_password"
-                        control={control}
-                        render={({ field }) => {
-                            return (
-                                <TextField 
-                                    id="email" 
-                                    label="Password" 
-                                    variant="outlined"
-                                    {...field} 
-                                    type="password"
-                                />
-                            )
-                        }}
-                    />
+                  <Controller
+                      name="login_password"
+                      control={control}
+                      render={({ field }) => {
+                          return (
+                              <TextField 
+                                  id="email" 
+                                  label="Password" 
+                                  variant="outlined"
+                                  {...field} 
+                                  type="password"
+                              />
+                          )
+                      }}
+                  />
 
-                    <Button
-                        variant="contained"
-                        type="submit"
-                        sx={{ height: "3rem" }}
-                        onClick={handleLoginClick}
-                    >
-                        LOGIN
-                    </Button>
-                </Box>
+                  <Button
+                      variant="contained"
+                      type="submit"
+                      sx={{ height: "3rem" }}
+                      onClick={handleLoginClick}
+                  >
+                      LOGIN
+                  </Button>
+              </Box>
 
-                <Typography sx={{ color: "#0288D1"}}>
-                    <Link href="/password-reset">
-                        <a>
-                            Forgot your password?
-                        </a>
-                    </Link>
-                </Typography>
-            </Box>
+              <Typography sx={{ color: "#0288D1"}}>
+                  <Link href="/password-reset">
+                      <a>
+                          Forgot your password?
+                      </a>
+                  </Link>
+              </Typography>
+          </Box>
         </Box>
       </Box>
     </Box>
