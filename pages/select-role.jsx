@@ -50,7 +50,8 @@ const RoleSelect = () => {
                 >
                     <Box
                         sx={{
-                            marginBottom: "0.3rem"
+                            marginBottom: "0.3rem",
+                            marginTop: "1.5rem"
                         }}
                     >
                         <Image 
@@ -75,7 +76,7 @@ const RoleSelect = () => {
                             justifyContent: "center",
                             gap: "1.5rem",
                             width: "90%",
-                            margin: "0 auto"
+                            margin: "0 auto 1rem"
                         }}
                     >
                         <Button
