@@ -72,21 +72,40 @@ const RoleSelect = () => {
                     <Box
                         sx={{
                             display: "flex",
-                            flexDirection: "column",
+                            flexDirection: {
+                                lg: "row",
+                                md: "row",
+                                sm: "column",
+                                xs: "column"
+                            },
                             justifyContent: "center",
                             gap: "1.5rem",
-                            width: "90%",
+                            width: "80%",
                             margin: "0 auto 1rem"
                         }}
                     >
                         <Button
                             variant='contained'
+                            sx={{
+                                width: {
+                                    md: "300px",
+                                    lg: "400px",
+                                    xl: "400px"
+                                }
+                            }}
                         >
                             CLIENT
                         </Button>
 
                         <Button
                             variant='outlined'
+                            sx={{
+                                width: {
+                                    md: "300px",
+                                    lg: "400px",
+                                    xl: "400px"
+                                }
+                            }}
                         >
                             INVESTOR
                         </Button>
