@@ -18,7 +18,7 @@ export default function Home() {
     }
 
     const handleLoginClick = () => {
-      router.push("/");
+      router.push("/select-role");
     }
 
   return (
@@ -279,7 +279,7 @@ export default function Home() {
                 </Box>
 
                 <Typography sx={{ color: "#0288D1"}}>
-                    <Link href="/forgotpass">
+                    <Link href="/password-reset">
                         <a>
                             Forgot your password?
                         </a>
