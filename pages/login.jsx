@@ -5,13 +5,20 @@ import ClientImage from "../assets/BG.png"
 import Logo from '../assets/Logo.png'
 
 import Link from 'next/link'
+import { useRouter } from "next/router";
 
 
 export default function Home() {
+    const router = useRouter();
+
     const { control, handleSubmit } = useForm();
 
     const onsubmit = (data) => {
         console.log(data)
+    }
+
+    const handleLoginClick = () => {
+      router.push("/");
     }
 
   return (
@@ -23,21 +30,28 @@ export default function Home() {
     >
       <Box
         sx={{
-          width: "85%",
+          width: "100%",
           height: "100vh",
-          margin: "2.5rem auto 2.5rem",
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
-          gap: "3rem"
+          // gap: "1rem"
         }}
       >
         <Box
-          style={{
-            width: "60%",
+          sx={{
+            width: {
+              lg: "60%",
+              md: "50%",
+            },
             height: "100%",
-            display: "flex",
+            display: {
+              lg: "flex",
+              md: "flex",
+              sm: "none",
+              xs: "none"
+            },
             justifyContent: "center",
             backgroundImage: "url('./Image.png')",
             backgroundPosition: "center",
@@ -46,7 +60,11 @@ export default function Home() {
         >
           <Box
             sx={{
-              width: "70%",
+              width: {
+                lg: "70%",
+                md: "80%"
+              },
+              height: "80%",
               margin: "5rem auto 2rem",
               display: "flex",
               flexDirection: "column",
@@ -57,9 +75,19 @@ export default function Home() {
             <Typography
               variant="h2"
               sx={{
-                marginBottom: "1.8rem",
+                marginBottom: {
+                  lg: "1.8rem",
+                  md: "1.5rem",
+                  sm: "1rem",
+                  xs: "1rem",
+                },
                 fontWeight: "600",
-                fontSize: "60px",
+                fontSize: {
+                  lg: "60px",
+                  md: "48px",
+                  sm: "36px",
+                  xs: "36px"
+                },
                 color: "white"
               }}
             >
@@ -70,7 +98,11 @@ export default function Home() {
               sx={{
                 color: "rgba(255, 255, 255, 0.7)",
                 fontSize: "18px",
-                marginBottom: "3.5rem"
+                marginBottom: {
+                  lg: "3.5rem",
+                  md: "2.8rem",
+                  sm: "2rem",
+                }
               }}
             >
               130 Years of Collective Experience <br /> $2.0 Billion of Successful Transactions
@@ -81,7 +113,13 @@ export default function Home() {
                 fontSize: "20px",
                 color: "white",
                 width: "80%",
-                marginBottom: "2rem"
+                marginBottom: "2rem",
+                display: {
+                  lg: "block",
+                  md: "none",
+                  sm: "none",
+                  xs: "none"
+                }
               }}
             >
               “Working with Meritage, we were able to find the right strategic partner that understood our capabilities, 
@@ -91,11 +129,16 @@ export default function Home() {
 
             <Box
               sx={{
-                display: "flex",
+                display: {
+                  lg: "flex",
+                  md: "none",
+                  sm: "none",
+                  xs: "none"
+                },
                 flexDirection: "row",
                 justifyContent: "flex-start",
                 gap: "1rem",
-                alignItems:  "center"
+                alignItems:  "center",
               }}
             >
               <Box>
@@ -129,13 +172,20 @@ export default function Home() {
         <Box
           sx={{
             height: "100%",
-            width: "40%"
+            width: {
+              lg: "40%",
+              md: "50%",
+              sm: "90%",
+              xs: "90%"
+            },
+            display: "flex",
+            justifyContent: "center",
           }}
         >
             <Box
                 sx={{
                     width: "80%",
-                    margin: "17rem auto 2rem",
+                    margin: "3rem auto 2rem",
                     display: "flex",
                     flexDirection: "column",
                     justifyContent: "center",
@@ -222,6 +272,7 @@ export default function Home() {
                         variant="contained"
                         type="submit"
                         sx={{ height: "3rem" }}
+                        onClick={handleLoginClick}
                     >
                         LOGIN
                     </Button>
