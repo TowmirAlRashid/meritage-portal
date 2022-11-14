@@ -2,9 +2,17 @@ import { Box, Button, Card, CardContent, Typography } from '@mui/material'
 import React from 'react'
 import Image from 'next/image'
 
+import { useRouter } from "next/router";
+
 import Logo from '../assets/Logo.png'
 
 const RoleSelect = () => {
+  const router = useRouter();
+
+  const handleClientClick = () => {
+    router.push("/admin");
+  }
+
   return (
     <Box
         sx={{
@@ -93,6 +101,7 @@ const RoleSelect = () => {
                                     xl: "400px"
                                 }
                             }}
+                            onClick={handleClientClick}
                         >
                             CLIENT
                         </Button>
