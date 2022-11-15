@@ -27,7 +27,7 @@ const CustomizedSnackbar = ({ vertical, horizontal, open, handleClose }) => {
         <Snackbar
             anchorOrigin={{ vertical, horizontal }}
             open={open}
-            autoHideDuration={1000}
+            autoHideDuration={2000}
             onClose={handleClose}
             message="We have e-mailed your password reset link!"
             TransitionComponent={TransitionLeft}

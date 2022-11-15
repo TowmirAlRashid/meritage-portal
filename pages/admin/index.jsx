@@ -23,6 +23,10 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 import Logo from "../../assets/Logo.png";
 import MiniLogo from "../../assets/minilogo.png";
+import SearchBox from '../../components/Search';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import CustomizedTable from '../../components/CustomizedTable';
+import { Paper } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -64,13 +68,20 @@ const AppBar = styled(MuiAppBar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
+  backgroundColor: "white",
+  borderBottom: "1px solid rgba(0, 0, 0, 0.12)",
+  boxShadow: "none",
   ...(open && {
     marginLeft: drawerWidth,
+    paddingRight: "1rem",
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
+  }),
+  ...(!open && {
+    width: `calc(100% - calc(${theme.spacing(8)} + 1px))`
   }),
 }));
 
@@ -95,136 +106,186 @@ export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const handleDrawerAction = () => {
+    setOpen(!open);
   };
 
   return (
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
+    <Box
+      sx={{
+        width: "100vw",
+        height: "100vh"
+      }}
+    >
+      <Box 
+        sx={{ 
+          display: {
+            lg: 'flex',
+            md: 'flex',
+            sm: "none",
+            xs: "none"
+          },
+          width: "100%",
+          height: "100%" 
+        }}>
+        <CssBaseline />
 
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <DashboardIcon />
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  <LogoutIcon />
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
+        <Drawer variant="permanent" open={open}>
+          <DrawerHeader
             sx={{
-              marginRight: 5,
-              ...(open && { display: 'none' }),
+              display: "flex",
+              justifyContent: "center"
             }}
           >
-            {/* <MenuIcon /> */}
-            {
-              open ? 
-                <Image
-                  src={Logo}
-                  alt="client logo"
-                /> :
-                <Image 
-                  src={MiniLogo}
-                  alt="client logo"
-                />
-            }
-          </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
-          </Typography>
-        </Toolbar>
-      </AppBar>
+            {open ? 
+              <Image
+                src={Logo}
+                alt="client logo"
+              /> :
+              <Image 
+                src={MiniLogo}
+                alt="client Mini logo"
+              />}
+          </DrawerHeader>
 
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
-          enim praesent elementum facilisis leo vel. Risus at ultrices mi tempus
-          imperdiet. Semper risus in hendrerit gravida rutrum quisque non tellus.
-          Convallis convallis tellus id interdum velit laoreet id donec ultrices.
-          Odio morbi quis commodo odio aenean sed adipiscing. Amet nisl suscipit
-          adipiscing bibendum est ultricies integer quis. Cursus euismod quis viverra
-          nibh cras. Metus vulputate eu scelerisque felis imperdiet proin fermentum
-          leo. Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa
-          sapien faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est ullamcorper
-          eget nulla facilisi etiam dignissim diam. Pulvinar elementum integer enim
-          neque volutpat ac tincidunt. Ornare suspendisse sed nisi lacus sed viverra
-          tellus. Purus sit amet volutpat consequat mauris. Elementum eu facilisis
-          sed odio morbi. Euismod lacinia at quis risus sed vulputate odio. Morbi
-          tincidunt ornare massa eget egestas purus viverra accumsan in. In hendrerit
-          gravida rutrum quisque non tellus orci ac. Pellentesque nec nam aliquam sem
-          et tortor. Habitant morbi tristique senectus et. Adipiscing elit duis
-          tristique sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+              height: '100vh'
+            }}
+          >
+            <Box>
+              <List>
+                {['Dashboard'].map((text) => (
+                  <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? 'initial' : 'center',
+                        px: 2.5,
+                        backgroundColor: "#0B4CCB",
+                        "&:hover": {
+                          backgroundColor: "#0B4CCB !important"
+                        }
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : 'auto',
+                          justifyContent: 'center',
+                          color: "white"
+                        }}
+                      >
+                        <DashboardIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={text} sx={{ opacity: open ? 1 : 0, color: "white" }} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+            
+            <Box>
+              <List>
+                {['Sign Out'].map((text) => (
+                  <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+                    <ListItemButton
+                      sx={{
+                        minHeight: 48,
+                        justifyContent: open ? 'initial' : 'center',
+                        px: 2.5,
+                        border: `${open ? "1px solid #0B4CCB" : "none" }`,
+                        borderRadius: "5px",
+                        margin: "0 10px"
+                      }}
+                    >
+                      <ListItemIcon
+                        sx={{
+                          minWidth: 0,
+                          mr: open ? 3 : 'auto',
+                          justifyContent: 'center',
+                          color: "#0B4CCB"
+                        }}
+                      >
+                        <LogoutIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={text} sx={{ opacity: open ? 1 : 0, color: "#0B4CCB" }} />
+                    </ListItemButton>
+                  </ListItem>
+                ))}
+              </List>
+            </Box>
+          </Box>
+        </Drawer>
+
+        <AppBar position="fixed" open={open}>
+          <Toolbar>
+            <IconButton 
+              onClick={handleDrawerAction}
+              sx={{
+                border: "1px solid black",
+                borderRadius: "50%",
+                marginRight: "1.2rem"
+              }}
+            >
+              {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            </IconButton>
+            
+            <Box
+              sx={{
+                width: "100%",
+                display: "flex",
+                flexDirection: "row",
+                justifyContent: "space-between"
+              }}
+            >
+              <SearchBox />
+
+              <Box
+                sx={{
+                  width: "7.5rem",
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  gap: "5px",
+                  marginRight: "1.5rem",
+                  "&:hover": {
+                    backgroundColor: "rgba(11, 76, 203, 0.04)"
+                  },
+                  padding: "4px 8px",
+                  borderRadius: "4px"
+                }}
+              >
+                <Typography color="black" fontWeight="bold" >BOOSTED</Typography>
+                <AccountCircleIcon 
+                  sx={{ 
+                    color: "#0B4CCB", 
+                    "&:hover": {
+                      backgroundColor: "rgba(11, 76, 203, 0.04) !important"
+                    } 
+                  }} 
+                />
+              </Box>
+            </Box>
+          </Toolbar>
+        </AppBar>
+
+        <Box component="main" sx={{ flexGrow: 1, p: 3, width: "100%", height: "100%", backgroundColor: "#FAFAFA" }}>
+          <DrawerHeader />
+          
+          <Box
+            sx={{
+              backgroundColor: "white",
+              borderRadius: "15px"
+            }}
+          >
+            <CustomizedTable />
+          </Box>
+        </Box>
       </Box>
     </Box>
   );
