@@ -1,10 +1,12 @@
-import { Box, Button, Card, CardContent, Typography } from '@mui/material'
+import { Box, Button, Card, CardContent, IconButton, Typography } from '@mui/material'
 import React from 'react'
 import Image from 'next/image'
 
 import { useRouter } from "next/router";
 
 import Logo from '../assets/Logo.png'
+import Client from '../assets/Client.png'
+import Investor from '../assets/Investor.png'
 
 const RoleSelect = () => {
   const router = useRouter();
@@ -93,30 +95,97 @@ const RoleSelect = () => {
                         }}
                     >
                         <Button
-                            variant='contained'
                             sx={{
-                                width: {
-                                    md: "300px",
-                                    lg: "400px",
-                                    xl: "400px"
+                                "&:hover": {
+                                    backgroundColor: "white !important"
                                 }
                             }}
-                            onClick={handleClientClick}
                         >
-                            CLIENT
+                            <Box
+                                sx={{
+                                    width: "9rem",
+                                    height: "10rem",
+                                    border: "1px solid rgba(11, 76, 203, 0.3)",
+                                    borderRadius: "4px",
+                                    padding: "1rem 1rem",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    justifyContent: "center",
+                                    gap: "1rem",
+                                    alignItems: "center",
+                                    color: "black",
+                                    "&:hover": {
+                                        border: "1px solid #0B4CCB",
+                                        boxShadow: "0px 4px 10px rgba(11, 76, 203, 0.2)",
+                                        color: "#0B4CCB"
+                                    },
+                                }}
+                            >
+                                <Box
+                                    sx={{
+                                        width: "6rem"
+                                    }}
+                                >
+                                    <Image
+                                        src={Client}
+                                        alt="client"
+                                    />
+                                </Box>
+                                <Typography
+                                    sx={{
+                                        fontWeight: "bold"
+                                    }}
+                                >
+                                    Client
+                                </Typography>
+                            </Box>
                         </Button>
 
                         <Button
-                            variant='outlined'
                             sx={{
-                                width: {
-                                    md: "300px",
-                                    lg: "400px",
-                                    xl: "400px"
+                                "&:hover": {
+                                    backgroundColor: "white !important"
                                 }
                             }}
                         >
-                            INVESTOR
+                            <Box
+                                sx={{
+                                    width: "9rem",
+                                    height: "10rem",
+                                    border: "1px solid rgba(11, 76, 203, 0.3)",
+                                    borderRadius: "4px",
+                                    padding: "1rem 1rem",
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    justifyContent: "center",
+                                    gap: "1rem",
+                                    alignItems: "center",
+                                    color: "black",
+                                    "&:hover": {
+                                        border: "1px solid #0B4CCB",
+                                        boxShadow: "0px 4px 10px rgba(11, 76, 203, 0.2)",
+                                        color: "#0B4CCB"
+                                    },
+                                }}
+                            >
+                               <Box
+                                    sx={{
+                                        width: "6rem"
+                                    }}
+                                >
+                                    <Image
+                                        src={Investor}
+                                        alt="Investor"
+                                    />
+                                </Box>
+                                <Typography
+                                    sx={{
+                                        fontWeight: "bold"
+                                    }}
+                                >
+                                    Investor
+                                </Typography>
+                            </Box>
                         </Button>
                     </Box>
                 </CardContent>
