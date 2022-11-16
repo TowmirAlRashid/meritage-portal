@@ -8,7 +8,6 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -16,8 +15,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import LogoutIcon from '@mui/icons-material/Logout';
 
@@ -26,9 +23,13 @@ import MiniLogo from "../../assets/minilogo.png";
 import SearchBox from '../../components/Search';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CustomizedTable from '../../components/CustomizedTable';
-import { Paper } from '@mui/material';
 
-const drawerWidth = 240;
+import { data } from "../../data"
+
+import { useRouter } from 'next/router'
+
+
+const drawerWidth = 200;
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -102,13 +103,16 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer() {
+export default function MiniDrawer({ data }) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+
+  const router = useRouter();
 
   const handleDrawerAction = () => {
     setOpen(!open);
   };
+
 
   return (
     <Box
@@ -280,13 +284,22 @@ export default function MiniDrawer() {
           <Box
             sx={{
               backgroundColor: "white",
-              borderRadius: "15px"
+              borderRadius: "15px",
+              marginRight: "1rem"
             }}
           >
-            <CustomizedTable />
+            <CustomizedTable data={data} router={router} />
           </Box>
         </Box>
       </Box>
     </Box>
   );
+}
+
+export async function getStaticProps(){
+  return {
+    props: {
+      data: data
+    }
+  }
 }

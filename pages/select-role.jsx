@@ -100,6 +100,7 @@ const RoleSelect = () => {
                                     backgroundColor: "white !important"
                                 }
                             }}
+                            onClick={handleClientClick}
                         >
                             <Box
                                 sx={{
@@ -107,11 +108,11 @@ const RoleSelect = () => {
                                     height: "10rem",
                                     border: "1px solid rgba(11, 76, 203, 0.3)",
                                     borderRadius: "4px",
-                                    padding: "1rem 1rem",
+                                    padding: "1.2rem 1.5rem 1rem",
                                     display: "flex",
                                     flexDirection: "column",
                                     justifyContent: "center",
-                                    gap: "1rem",
+                                    gap: "0.6rem",
                                     alignItems: "center",
                                     color: "black",
                                     "&:hover": {
@@ -123,7 +124,7 @@ const RoleSelect = () => {
                             >
                                 <Box
                                     sx={{
-                                        width: "6rem"
+                                        width: "5.5rem"
                                     }}
                                 >
                                     <Image
@@ -154,11 +155,11 @@ const RoleSelect = () => {
                                     height: "10rem",
                                     border: "1px solid rgba(11, 76, 203, 0.3)",
                                     borderRadius: "4px",
-                                    padding: "1rem 1rem",
+                                    padding: "1.2rem 1.5rem 1rem",
                                     display: "flex",
                                     flexDirection: "column",
                                     justifyContent: "center",
-                                    gap: "1rem",
+                                    gap: "0.6rem",
                                     alignItems: "center",
                                     color: "black",
                                     "&:hover": {
@@ -170,7 +171,7 @@ const RoleSelect = () => {
                             >
                                <Box
                                     sx={{
-                                        width: "6rem"
+                                        width: "5.5rem"
                                     }}
                                 >
                                     <Image

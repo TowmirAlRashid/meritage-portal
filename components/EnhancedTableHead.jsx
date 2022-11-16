@@ -40,7 +40,7 @@ const EnhancedTableHead = () => {
                     <TableCell
                         align="left"
                         key={headCell?.id}
-                        sx={{ paddingLeft: "2rem"}}
+                        sx={{ paddingLeft: "1rem"}}
                     >
                         {
                             headCell?.label

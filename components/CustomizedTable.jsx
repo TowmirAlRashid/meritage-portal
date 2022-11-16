@@ -1,8 +1,10 @@
-import { Box, FormControl, InputLabel, MenuItem, Select, Typography, styled, InputBase, TableContainer, Table, TableBody } from '@mui/material'
+import { Box, FormControl, InputLabel, MenuItem, Select, Typography, styled, InputBase, TableContainer, Table, TableBody, TableRow, TableCell, Pagination, TablePagination } from '@mui/material'
 import React, { useState } from 'react'
 
 import SearchIcon from '@mui/icons-material/Search';
 import EnhancedTableHead from './EnhancedTableHead';
+
+import Link from 'next/link'
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -51,8 +53,25 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 
 
 
-const CustomizedTable = () => {
+const CustomizedTable = ({ data, router }) => {
   const [entries, setEntries] = useState(10);
+
+  const [page, setPage] = React.useState(1);
+  const handlePageChange = (event, value) => {
+    setPage(value);
+  };
+
+  const [query, setQuery] = useState('')
+
+  const keys = ["eng_name"];
+
+//   const Search = (data) => {
+//     return data?.filter((item) =>
+//         keys.some((key) => item[key].toLowerCase().includes(query))
+//     );
+//   };
+
+// console.log(data)
 
   const handleChange = (event) => {
     setEntries(event.target.value);
@@ -125,13 +144,63 @@ const CustomizedTable = () => {
         </Box>
 
         <TableContainer>
-            <Table
-                aria-labelledby="tableTitle"
-            >
-                <EnhancedTableHead />
+            <Box sx={{
+                    pl: "1.5rem !important",
+                    pr: "1.5rem !important"
+                }}>
+                <Table
+                    aria-labelledby="tableTitle"
+                    
+                >
+                    <EnhancedTableHead />
 
-                <TableBody></TableBody>
-            </Table>
+                    <TableBody>
+                        {
+                            data
+                            ?.filter((row, index) => index >= ((page - 1) * entries) && index < (page * entries))
+                            ?.map((row, index) => {
+                            return (
+                                <TableRow
+                                    hover
+                                    key={row.id}
+                                >
+                                    <TableCell sx={{ paddingLeft: "1rem"}}>
+                                        {row.id}
+                                    </TableCell>
+                                    <TableCell sx={{ paddingLeft: "1rem"}}>
+                                        <Link href={`/admin/${row.eng_name}`}>
+                                            <a>{row.eng_name}</a>
+                                        </Link>
+                                    </TableCell>
+                                    <TableCell sx={{ paddingLeft: "1rem"}}>{row.eng_date}</TableCell>
+                                    <TableCell sx={{ paddingLeft: "1rem"}}>{row.eng_stage}</TableCell>
+                                </TableRow>
+                            )
+                        })}
+                    </TableBody>
+                </Table>
+            
+                <Box
+                    sx={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        flexDirection: "row",
+                        margin: "1.5rem 2rem 1rem"
+                    }}
+                >
+                    <Typography>
+                        Showing {((page - 1) * entries) + 1} to {page < (data.length / entries) ? `${((page - 1) * entries) + entries}` : `${((page -1) * entries) + (data.length % entries)}`} of {data.length} entries
+                    </Typography>
+
+                    <Pagination 
+                        count={Math.ceil(data.length / entries)} 
+                        page={page} 
+                        variant="outlined" 
+                        shape="rounded"
+                        onChange={handlePageChange} 
+                    />
+                </Box>
+            </Box>
         </TableContainer>
     </Box>
   )

@@ -1,7 +1,12 @@
 import { Box, Typography } from "@mui/material";
+import { useRouter } from 'next/router'
 
 
-export default function Home() {
+export default function Home({loggedInUser}) {
+  const router = useRouter();
+  // if(loggedInUser === ""){
+  //   router.push("/login")
+  // }
   return (
     <Box 
       sx={{
@@ -10,6 +15,9 @@ export default function Home() {
         textAlign: "center"
       }}
     >
+      {/* {
+        console.log({loggedInUser})
+      } */}
       <h1>Home</h1>
     </Box>
   )
