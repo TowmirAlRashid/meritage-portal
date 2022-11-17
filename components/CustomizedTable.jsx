@@ -187,7 +187,7 @@ const CustomizedTable = ({ data, entries, setEntries }) => {
                                     </TableCell>
                                     <TableCell sx={{ paddingLeft: "1rem"}}>
                                         <Link href={`/admin/${row.eng_name}`}>
-                                            <a>{row.eng_name}</a>
+                                            <a style={{ color: "#0288D1" }}>{row.eng_name}</a>
                                         </Link>
                                     </TableCell>
                                     <TableCell sx={{ paddingLeft: "1rem"}}>{row.eng_date}</TableCell>

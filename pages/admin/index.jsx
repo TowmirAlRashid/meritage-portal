@@ -20,14 +20,13 @@ import LogoutIcon from '@mui/icons-material/Logout';
 
 import Logo from "../../assets/Logo.png";
 import MiniLogo from "../../assets/minilogo.png";
-import SearchBox from '../../components/Search';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CustomizedTable from '../../components/CustomizedTable';
 
 import { data } from "../../data"
 
 import { useRouter } from 'next/router'
 import { useState } from 'react'
+import ProfileOrLogout from '../../components/profile';
 
 
 const drawerWidth = 200;
@@ -250,32 +249,7 @@ export default function MiniDrawer({ data }) {
                 justifyContent: "flex-end"
               }}
             >
-              <Box
-                sx={{
-                  width: "7.5rem",
-                  display: "flex",
-                  flexDirection: "row",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                  gap: "5px",
-                  marginRight: "1.5rem",
-                  "&:hover": {
-                    backgroundColor: "rgba(11, 76, 203, 0.04)"
-                  },
-                  padding: "4px 8px",
-                  borderRadius: "4px"
-                }}
-              >
-                <Typography color="black" fontWeight="bold" >BOOSTED</Typography>
-                <AccountCircleIcon 
-                  sx={{ 
-                    color: "#0B4CCB", 
-                    "&:hover": {
-                      backgroundColor: "rgba(11, 76, 203, 0.04) !important"
-                    } 
-                  }} 
-                />
-              </Box>
+              <ProfileOrLogout />
             </Box>
           </Toolbar>
         </AppBar>

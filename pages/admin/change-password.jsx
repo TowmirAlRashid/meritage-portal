@@ -17,15 +17,16 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 
-import Logo from "../../../assets/Logo.png";
-import MiniLogo from "../../../assets/minilogo.png";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import CustomizedTable from '../../../components/CustomizedTable';
+import Logo from "../../assets/Logo.png";
+import MiniLogo from "../../assets/minilogo.png";
 
 
 import { useRouter } from 'next/router'
 import { useState } from 'react'
-import ProfileOrLogout from '../../../components/profile';
+import ProfileOrLogout from '../../components/profile';
+import BackToAdmin from '../../components/backToAdmin';
+import { TextField } from '@mui/material';
+import InputBox from '../../components/inputBox';
 
 
 const drawerWidth = 200;
@@ -225,6 +226,9 @@ export default function MiniDrawer({ data }) {
         <Box component="main" sx={{ flexGrow: 1, p: 3, width: "100%", height: '100vh', backgroundColor: "#F5F5F5"}}>
           
           <DrawerHeader />
+
+          <BackToAdmin text="Change Password" />
+
           <Box
             sx={{
               backgroundColor: "white",
@@ -233,7 +237,22 @@ export default function MiniDrawer({ data }) {
               mb: 10,
             }}
           >
-            
+            <Box>
+                <Box>
+                    {/* <label id='currentPass'>Current Password</label>
+
+                    <TextField
+                        id='currentPass'
+                        type='password'
+                    /> */}
+                    <InputBox
+                        label="primaryContactTitle"
+                        labelContent="Current Password"
+                    />
+                </Box>
+                <Box></Box>
+                <Box></Box>
+            </Box>
           </Box>
         </Box>
       </Box>
