@@ -53,25 +53,33 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
 
 
 
-const CustomizedTable = ({ data, router }) => {
-  const [entries, setEntries] = useState(10);
+const CustomizedTable = ({ data, entries, setEntries }) => {
 
   const [page, setPage] = React.useState(1);
-  const handlePageChange = (event, value) => {
+  const handlePageChange = (_, value) => {
     setPage(value);
   };
 
+  const key = "eng_name"
+
   const [query, setQuery] = useState('')
+//   const [foundEngagements, setFoundEngagements] = useState(data);
 
-  const keys = ["eng_name"];
+//   const filterEngagements = (e) => {
+//     const keyword = e.target.value;
 
-//   const Search = (data) => {
-//     return data?.filter((item) =>
-//         keys.some((key) => item[key].toLowerCase().includes(query))
-//     );
+//     if (keyword !== "") {
+//       const results = data?.filter((engagement) => {
+//         return engagement.eng_name.toLowerCase().startsWith(keyword.toLowerCase());
+//       });
+//       setFoundEngagements(results);
+//     } else {
+//         setFoundEngagements(data);
+//     }
+
+//     setQuery(keyword);
 //   };
 
-// console.log(data)
 
   const handleChange = (event) => {
     setEntries(event.target.value);
@@ -137,6 +145,9 @@ const CustomizedTable = ({ data, router }) => {
                             placeholder="Search…"
                             inputProps={{ 'aria-label': 'search' }}
                             sx={{ color: "black"}}
+                            type="search"
+                            value={query}
+                            onChange={(e) => setQuery(e.target.value)}
                         />
                     </Search>
                 </Box>
@@ -157,8 +168,15 @@ const CustomizedTable = ({ data, router }) => {
                     <TableBody>
                         {
                             data
-                            ?.filter((row, index) => index >= ((page - 1) * entries) && index < (page * entries))
-                            ?.map((row, index) => {
+                            ?.filter((row) => {
+                                if(query !== "") {
+                                    return row[key].toLowerCase().includes(query)
+                                } else {
+                                    return row;
+                                }
+                            })
+                            ?.filter((_, index) => index >= ((page - 1) * entries) && index < (page * entries))
+                            ?.map((row) => {
                             return (
                                 <TableRow
                                     hover
@@ -198,6 +216,16 @@ const CustomizedTable = ({ data, router }) => {
                         variant="outlined" 
                         shape="rounded"
                         onChange={handlePageChange} 
+                        size="large"
+                        sx={{
+                            "& .MuiPaginationItem-root.Mui-selected": {
+                                color: "white",
+                                backgroundColor: "#0B4CCB"
+                            },
+                            "& .MuiPaginationItem-root": {
+                                border: "none !important"
+                            }
+                        }}
                     />
                 </Box>
             </Box>

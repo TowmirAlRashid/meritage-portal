@@ -27,6 +27,7 @@ import CustomizedTable from '../../components/CustomizedTable';
 import { data } from "../../data"
 
 import { useRouter } from 'next/router'
+import { useState } from 'react'
 
 
 const drawerWidth = 200;
@@ -109,6 +110,8 @@ export default function MiniDrawer({ data }) {
 
   const router = useRouter();
 
+  const [entries, setEntries] = useState(10);
+
   const handleDrawerAction = () => {
     setOpen(!open);
   };
@@ -118,7 +121,8 @@ export default function MiniDrawer({ data }) {
     <Box
       sx={{
         width: "100vw",
-        height: "100vh"
+        height: "100% !important",
+        backgroundColor: "#F5F5F5"
       }}
     >
       <Box 
@@ -130,7 +134,7 @@ export default function MiniDrawer({ data }) {
             xs: "none"
           },
           width: "100%",
-          height: "100%" 
+          height: "100vh" 
         }}>
         <CssBaseline />
 
@@ -192,7 +196,7 @@ export default function MiniDrawer({ data }) {
               </List>
             </Box>
             
-            <Box>
+            {/* <Box>
               <List>
                 {['Sign Out'].map((text) => (
                   <ListItem key={text} disablePadding sx={{ display: 'block' }}>
@@ -221,7 +225,7 @@ export default function MiniDrawer({ data }) {
                   </ListItem>
                 ))}
               </List>
-            </Box>
+            </Box> */}
           </Box>
         </Drawer>
 
@@ -243,11 +247,9 @@ export default function MiniDrawer({ data }) {
                 width: "100%",
                 display: "flex",
                 flexDirection: "row",
-                justifyContent: "space-between"
+                justifyContent: "flex-end"
               }}
             >
-              <SearchBox />
-
               <Box
                 sx={{
                   width: "7.5rem",
@@ -278,17 +280,18 @@ export default function MiniDrawer({ data }) {
           </Toolbar>
         </AppBar>
 
-        <Box component="main" sx={{ flexGrow: 1, p: 3, width: "100%", height: "100%", backgroundColor: "#FAFAFA" }}>
-          <DrawerHeader />
+        <Box component="main" sx={{ flexGrow: 1, p: 3, width: "100%", height: '100vh', backgroundColor: "#F5F5F5"}}>
           
+          <DrawerHeader />
           <Box
             sx={{
               backgroundColor: "white",
               borderRadius: "15px",
-              marginRight: "1rem"
+              marginRight: "1rem",
+              mb: 10,
             }}
           >
-            <CustomizedTable data={data} router={router} />
+            <CustomizedTable data={data} router={router} entries={entries} setEntries={setEntries} />
           </Box>
         </Box>
       </Box>
