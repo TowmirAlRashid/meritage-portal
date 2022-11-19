@@ -19,13 +19,13 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 
 import Logo from "../../../assets/Logo.png";
 import MiniLogo from "../../../assets/minilogo.png";
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import CustomizedTable from '../../../components/CustomizedTable';
 
 
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import ProfileOrLogout from '../../../components/profile';
+import EngagementDetails from '../../../components/EngagementDetails';
+import BackToAdmin from '../../../components/backToAdmin';
 
 
 const drawerWidth = 200;
@@ -102,11 +102,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer({ data }) {
-  const theme = useTheme();
+export default function Engagement({ data }) {
   const [open, setOpen] = React.useState(false);
 
   const router = useRouter();
+  const nameOfEngagement = router.query.engagementname;
 
   const [entries, setEntries] = useState(10);
 
@@ -225,6 +225,7 @@ export default function MiniDrawer({ data }) {
         <Box component="main" sx={{ flexGrow: 1, p: 3, width: "100%", height: '100vh', backgroundColor: "#F5F5F5"}}>
           
           <DrawerHeader />
+          <BackToAdmin text={nameOfEngagement} />
           <Box
             sx={{
               backgroundColor: "white",
@@ -233,7 +234,7 @@ export default function MiniDrawer({ data }) {
               mb: 10,
             }}
           >
-            
+            <EngagementDetails />
           </Box>
         </Box>
       </Box>

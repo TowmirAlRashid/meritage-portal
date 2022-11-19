@@ -120,7 +120,7 @@ export default function MiniDrawer({ data }) {
     <Box
       sx={{
         width: "100vw",
-        height: "100% !important",
+        height: "100vh !important",
         backgroundColor: "#F5F5F5"
       }}
     >
@@ -133,7 +133,8 @@ export default function MiniDrawer({ data }) {
             xs: "none"
           },
           width: "100%",
-          height: "100vh" 
+          height: "100vh" ,
+          backgroundColor: "#F5F5F5"
         }}>
         <CssBaseline />
 
