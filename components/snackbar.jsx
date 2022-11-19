@@ -11,7 +11,7 @@ function TransitionLeft(props) {
 }
 
 
-const CustomizedSnackbar = ({ vertical, horizontal, open, handleClose }) => {
+const CustomizedSnackbar = ({ vertical, horizontal, openSnack, handleClose, message }) => {
     const [openAlert, setOpenAlert] = useState(false);
 
     const handleAlertClose = (event, reason) => {
@@ -26,10 +26,10 @@ const CustomizedSnackbar = ({ vertical, horizontal, open, handleClose }) => {
     <Box>
         <Snackbar
             anchorOrigin={{ vertical, horizontal }}
-            open={open}
+            open={openSnack}
             autoHideDuration={2000}
             onClose={handleClose}
-            message="We have e-mailed your password reset link!"
+            message={message}
             TransitionComponent={TransitionLeft}
             key={vertical + horizontal}
             sx={{
@@ -39,7 +39,7 @@ const CustomizedSnackbar = ({ vertical, horizontal, open, handleClose }) => {
             }}
         >
             <Alert onClose={handleAlertClose} severity="success" sx={{ width: '100%', "& .MuiAlert-action": { display: "none"}, "& .MuiAlert-icon": { display: "none"} }}>
-                We have e-mailed your password reset link!
+                {message}
             </Alert>
         </Snackbar>
     </Box>

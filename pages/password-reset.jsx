@@ -13,12 +13,12 @@ import { useState } from "react";
 
 export default function Home() {
     const [state, setState] = useState({
-      open: false,
+      openSnack: false,
       vertical: 'bottom',
       horizontal: 'right',
     });
 
-    const { vertical, horizontal, open } = state;
+    const { vertical, horizontal, openSnack } = state;
 
     const router = useRouter();
 
@@ -29,11 +29,11 @@ export default function Home() {
     }
 
     const handleResetPasswordClick = (newState, Transition) => () => {
-      setState({ open: true, Transition, ...newState });
+      setState({ openSnack: true, Transition, ...newState });
     };
 
     const handleClose = () => {
-      setState({ ...state, open: false });
+      setState({ ...state, openSnack: false });
     };
 
   return (
@@ -288,8 +288,9 @@ export default function Home() {
               <CustomizedSnackbar 
                 vertical={vertical} 
                 horizontal={horizontal} 
-                open={open}
+                openSnack={openSnack}
                 handleClose={handleClose}
+                message="We have e-mailed your password reset link!"
               />
           </Box>
         </Box>
