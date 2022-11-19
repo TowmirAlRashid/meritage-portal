@@ -6,6 +6,7 @@ const InputBox = ({ labelId, labelContent }) => {
   return (
         <Box 
           sx={{ 
+            width: "100%",
             display: "flex",
             flexDirection: "row",
             justifyContent: "flex-start",
@@ -18,7 +19,7 @@ const InputBox = ({ labelId, labelContent }) => {
             id="currentPass" 
             variant="outlined"
             type="password"
-            sx={{ width: "40rem", "& .MuiInputBase-input": { padding: "10px 8px"}}}
+            sx={{ width: "80%", "& .MuiInputBase-input": { padding: "10px 8px"}}}
           />
         </Box>
   )

@@ -144,10 +144,12 @@ export default function Engagement({ data }) {
             }}
           >
             {open ? 
-              <Image
-                src={Logo}
-                alt="client logo"
-              /> :
+              <Box sx={{ width: { lg: "11.4rem", md: "10rem" }}}>
+                <Image
+                  src={Logo}
+                  alt="client logo"
+                />
+              </Box> :
               <Image 
                 src={MiniLogo}
                 alt="client Mini logo"

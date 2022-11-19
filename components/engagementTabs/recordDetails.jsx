@@ -50,7 +50,7 @@ const RecordDetails = () => {
                 margin: "0 auto",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-between",
+                justifyContent: "flex-start",
                 alignItems: "center"
             }}
         >
