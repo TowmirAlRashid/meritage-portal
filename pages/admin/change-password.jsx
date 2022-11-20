@@ -142,7 +142,8 @@ export default function MiniDrawer({ data }) {
       sx={{
         width: "100vw",
         height: "100% !important",
-        backgroundColor: "#F5F5F5"
+        backgroundColor: "#F5F5F5",
+        overflowY: "auto",
       }}
     >
       <Box 

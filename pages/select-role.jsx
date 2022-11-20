@@ -32,8 +32,8 @@ const RoleSelect = () => {
         <Box
             sx={{
                 width: {
-                    xs: "90%",
-                    sm: "50%",
+                    xs: "70%",
+                    sm: "60%",
                     md: "40%",
                     lg: "30%"
                 },
@@ -41,7 +41,12 @@ const RoleSelect = () => {
                 alignItems: "center",
                 alignContent: "center",
                 justifyContent: "center",
-                margin: "auto auto"
+                margin: {
+                    lg: "auto auto",
+                    md: "auto auto",
+                    sm: "30% auto",
+                    xs: "30% auto"
+                }
             }}
         >
             <Card
@@ -90,7 +95,12 @@ const RoleSelect = () => {
                             },
                             justifyContent: "center",
                             gap: "1.5rem",
-                            width: "80%",
+                            width: {
+                                lg: "80%",
+                                md: "80%",
+                                sm: "90%",
+                                xs: "90%",
+                            },
                             margin: "0 auto 1rem"
                         }}
                     >
@@ -104,8 +114,18 @@ const RoleSelect = () => {
                         >
                             <Box
                                 sx={{
-                                    width: "9rem",
-                                    height: "10rem",
+                                    width: {
+                                        lg: "9rem",
+                                        md: "9rem",
+                                        sm: "10rem",
+                                        xs: "11rem"
+                                    },
+                                    height: {
+                                        lg: "10rem",
+                                        md: "10rem",
+                                        sm: "10.5rem",
+                                        xs: "11rem"
+                                    },
                                     border: "1px solid rgba(11, 76, 203, 0.3)",
                                     borderRadius: "4px",
                                     padding: "1.2rem 1.5rem 1rem",
@@ -151,8 +171,18 @@ const RoleSelect = () => {
                         >
                             <Box
                                 sx={{
-                                    width: "9rem",
-                                    height: "10rem",
+                                    width: {
+                                        lg: "9rem",
+                                        md: "9rem",
+                                        sm: "10rem",
+                                        xs: "11rem"
+                                    },
+                                    height: {
+                                        lg: "10rem",
+                                        md: "10rem",
+                                        sm: "10.5rem",
+                                        xs: "11rem"
+                                    },
                                     border: "1px solid rgba(11, 76, 203, 0.3)",
                                     borderRadius: "4px",
                                     padding: "1.2rem 1.5rem 1rem",

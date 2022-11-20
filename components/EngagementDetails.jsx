@@ -58,7 +58,18 @@ export default function EngagementDetails() {
             mb: 10, 
         }}
     >
-      <Tabs value={value} onChange={handleChange} centered sx={{ "& .MuiTabs-flexContainer": {boxShadow: "inset 0px -1px 0px rgba(0, 0, 0, 0.12)"}}}>
+      <Tabs 
+        value={value} 
+        onChange={handleChange} 
+        centered 
+        sx={{ 
+          "& .MuiTabs-flexContainer": {boxShadow: "inset 0px -1px 0px rgba(0, 0, 0, 0.12)"},
+          "& .MuiTabs-scroller": {
+            borderBottom: "none !important"
+          }
+        }}
+        TabIndicatorProps={{style: {borderBottom: "none"}}}
+      >
         <Tab label="RECORD DETAILS" {...a11yProps(0)} />
         <Tab label="CONTACT TARGET" {...a11yProps(1)} />
         <Tab label="CAMPAIGN DETAILS" {...a11yProps(2)} />

@@ -5,6 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import EnhancedTableHead from './EnhancedTableHead';
 
 import Link from 'next/link'
+import EmptyData from './EmptyData';
 
 
 const Search = styled('div')(({ theme }) => ({
@@ -154,82 +155,86 @@ const CustomizedTable = ({ data, entries, setEntries }) => {
             </Box>
         </Box>
 
-        <TableContainer>
-            <Box sx={{
-                    pl: "1.5rem !important",
-                    pr: "1.5rem !important"
-                }}>
-                <Table
-                    aria-labelledby="tableTitle"
-                    
-                >
-                    <EnhancedTableHead />
+        {
+            data?.length > 0 ?
+                <TableContainer>
+                <Box sx={{
+                        pl: "1.5rem !important",
+                        pr: "1.5rem !important"
+                    }}>
+                    <Table
+                        aria-labelledby="tableTitle"
+                        
+                    >
+                        <EnhancedTableHead />
 
-                    <TableBody>
-                        {
-                            data
-                            ?.filter((row) => {
-                                if(query !== "") {
-                                    return row[key].toLowerCase().includes(query)
-                                } else {
-                                    return row;
-                                }
-                            })
-                            ?.filter((_, index) => index >= ((page - 1) * entries) && index < (page * entries))
-                            ?.map((row) => {
-                            return (
-                                <TableRow
-                                    hover
-                                    key={row.id}
-                                >
-                                    <TableCell sx={{ paddingLeft: "1rem"}}>
-                                        {row.id}
-                                    </TableCell>
-                                    <TableCell sx={{ paddingLeft: "1rem"}}>
-                                        <Link href={`/admin/${row.eng_name}`}>
-                                            <a style={{ color: "#0288D1" }}>{row.eng_name}</a>
-                                        </Link>
-                                    </TableCell>
-                                    <TableCell sx={{ paddingLeft: "1rem"}}>{row.eng_date}</TableCell>
-                                    <TableCell sx={{ paddingLeft: "1rem"}}>{row.eng_stage}</TableCell>
-                                </TableRow>
-                            )
-                        })}
-                    </TableBody>
-                </Table>
-            
-                <Box
-                    sx={{
-                        display: "flex",
-                        justifyContent: "space-between",
-                        flexDirection: "row",
-                        margin: "1.5rem 2rem 1rem"
-                    }}
-                >
-                    <Typography>
-                        Showing {((page - 1) * entries) + 1} to {page < (data.length / entries) ? `${((page - 1) * entries) + entries}` : `${((page -1) * entries) + (data.length % entries)}`} of {data.length} entries
-                    </Typography>
-
-                    <Pagination 
-                        count={Math.ceil(data.length / entries)} 
-                        page={page} 
-                        variant="outlined" 
-                        shape="rounded"
-                        onChange={handlePageChange} 
-                        size="large"
+                        <TableBody>
+                            {
+                                data
+                                ?.filter((row) => {
+                                    if(query !== "") {
+                                        return row[key].toLowerCase().includes(query)
+                                    } else {
+                                        return row;
+                                    }
+                                })
+                                ?.filter((_, index) => index >= ((page - 1) * entries) && index < (page * entries))
+                                ?.map((row) => {
+                                return (
+                                    <TableRow
+                                        hover
+                                        key={row.id}
+                                    >
+                                        <TableCell sx={{ paddingLeft: "1rem"}}>
+                                            {row.id}
+                                        </TableCell>
+                                        <TableCell sx={{ paddingLeft: "1rem"}}>
+                                            <Link href={`/admin/${row.eng_name}`}>
+                                                <a style={{ color: "#0288D1" }}>{row.eng_name}</a>
+                                            </Link>
+                                        </TableCell>
+                                        <TableCell sx={{ paddingLeft: "1rem"}}>{row.eng_date}</TableCell>
+                                        <TableCell sx={{ paddingLeft: "1rem"}}>{row.eng_stage}</TableCell>
+                                    </TableRow>
+                                )
+                            })}
+                        </TableBody>
+                    </Table>
+                
+                    <Box
                         sx={{
-                            "& .MuiPaginationItem-root.Mui-selected": {
-                                color: "white",
-                                backgroundColor: "#0B4CCB"
-                            },
-                            "& .MuiPaginationItem-root": {
-                                border: "none !important"
-                            }
+                            display: "flex",
+                            justifyContent: "space-between",
+                            flexDirection: "row",
+                            margin: "1.5rem 2rem 1rem"
                         }}
-                    />
+                    >
+                        <Typography>
+                            Showing {((page - 1) * entries) + 1} to {page < (data.length / entries) ? `${((page - 1) * entries) + entries}` : `${((page -1) * entries) + (data.length % entries)}`} of {data.length} entries
+                        </Typography>
+
+                        <Pagination 
+                            count={Math.ceil(data.length / entries)} 
+                            page={page} 
+                            variant="outlined" 
+                            shape="rounded"
+                            onChange={handlePageChange} 
+                            size="large"
+                            sx={{
+                                "& .MuiPaginationItem-root.Mui-selected": {
+                                    color: "white",
+                                    backgroundColor: "#0B4CCB"
+                                },
+                                "& .MuiPaginationItem-root": {
+                                    border: "none !important"
+                                }
+                            }}
+                        />
+                    </Box>
                 </Box>
-            </Box>
-        </TableContainer>
+                </TableContainer> :
+                <EmptyData />
+        }
     </Box>
   )
 }

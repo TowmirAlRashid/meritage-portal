@@ -121,10 +121,11 @@ export default function MiniDrawer({ data }) {
       sx={{
         width: "100vw",
         height: "100vh !important",
-        backgroundColor: "#F5F5F5"
+        backgroundColor: "#F5F5F5",
+        overflowY: "auto",
       }}
     >
-      <Box 
+      <Box        //Web and Tab view
         sx={{ 
           display: {
             lg: 'flex',
@@ -134,7 +135,7 @@ export default function MiniDrawer({ data }) {
           },
           width: "100%",
           height: "100vh" ,
-          backgroundColor: "#F5F5F5"
+          backgroundColor: "#F5F5F5",
         }}>
         <CssBaseline />
 
@@ -257,7 +258,7 @@ export default function MiniDrawer({ data }) {
           </Toolbar>
         </AppBar>
 
-        <Box component="main" sx={{ flexGrow: 1, p: 3, width: "100%", height: '100vh', backgroundColor: "#F5F5F5"}}>
+        <Box component="main" sx={{ flexGrow: 1, p: 3, width: "100%", height: '100vh', mb: "1rem", backgroundColor: "#F5F5F5"}}>
           
           <DrawerHeader />
           <Box
@@ -272,6 +273,20 @@ export default function MiniDrawer({ data }) {
           </Box>
         </Box>
       </Box>
+
+      <Box        // mobile view
+        sx={{ 
+          display: {
+            lg: 'none',
+            md: 'none',
+            sm: "flex",
+            xs: "flex"
+          },
+          width: "100%",
+          height: "100vh" ,
+          backgroundColor: "#F5F5F5",
+        }}
+      ></Box>
     </Box>
   );
 }
