@@ -35,7 +35,7 @@ const CustomizedSnackbar = ({ vertical, horizontal, openSnack, handleClose, mess
             sx={{
                 "& .MuiSnackbar-root": {
                     backgroundColor: "green !important"
-                }
+                },
             }}
         >
             <Alert onClose={handleAlertClose} severity="success" sx={{ width: '100%', "& .MuiAlert-action": { display: "none"}, "& .MuiAlert-icon": { display: "none"} }}>

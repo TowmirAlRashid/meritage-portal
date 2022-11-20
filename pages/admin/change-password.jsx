@@ -24,9 +24,11 @@ import { useRouter } from 'next/router'
 import { useState } from 'react'
 import ProfileOrLogout from '../../components/profile';
 import BackToAdmin from '../../components/backToAdmin';
-import { Button, TextField } from '@mui/material';
+import { Button, TextField, Typography } from '@mui/material';
 import { Controller, useForm } from 'react-hook-form';
 import CustomizedSnackbar from '../../components/snackbar';
+import TopHeader from '../../components/mobile/TopHeader';
+import Navbar from '../../components/mobile/Navbar';
 
 
 const drawerWidth = 200;
@@ -103,13 +105,10 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function MiniDrawer({ data }) {
-  const theme = useTheme();
+export default function MiniDrawer() {
   const [open, setOpen] = React.useState(false);
 
   const router = useRouter();
-
-  const [entries, setEntries] = useState(10);
 
   const handleDrawerAction = () => {
     setOpen(!open);
@@ -137,6 +136,11 @@ export default function MiniDrawer({ data }) {
     setState({ openSnack: true, Transition, ...newState });
   };
 
+  const handleLogOut = () => {
+    router.push("/login")
+  }
+
+
   return (
     <Box
       sx={{
@@ -146,7 +150,7 @@ export default function MiniDrawer({ data }) {
         overflowY: "auto",
       }}
     >
-      <Box 
+      <Box              // web and tab view
         sx={{ 
           display: {
             lg: 'flex',
@@ -371,6 +375,178 @@ export default function MiniDrawer({ data }) {
             </Box>
           </Box>
         </Box>
+      </Box>
+
+      <Box              // mobile view
+        sx={{ 
+          display: {
+            lg: 'none',
+            md: 'none',
+            sm: "block",
+            xs: "block"
+          },
+          width: "100%",
+          height: "100vh" 
+        }}
+      >
+        <TopHeader />
+
+        <Typography 
+          sx={{
+            fontSize: "1.25rem",
+            fontWeight: "bold",
+            display: "block",
+            margin: "1.5rem 1rem 0"
+          }}
+        >
+          Change Password
+        </Typography>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+            alignItems: "center",
+            height: `calc(100% - 6rem)`,
+            overflowY: "scroll"
+          }}
+        >
+          <Box
+            sx={{
+              backgroundColor: "white",
+              width: "92%",
+              borderRadius: "15px",
+              margin: "1rem auto 3rem",
+              padding: "1.5rem 1rem 2rem"
+            }}
+            component="form"
+            onSubmit={handleSubmit(onsubmit)}
+          >
+            <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
+                    marginBottom: "1.5rem",
+                    gap: "8px"
+                  }}
+                >
+                    <label id='currentPass' style={{ width: "10rem", fontSize: "16px"}}>Current Password</label>
+                    <Controller
+                      name="current password"
+                      control={control}
+                      render={({ field }) => {
+                          return (
+                              <TextField 
+                                  id="currentPass" 
+                                  variant="outlined"
+                                  {...field} 
+                                  type="password"
+                                  sx={{ "& .MuiInputBase-input": { padding: "8px 6px"}}}
+                                  fullWidth
+                              />
+                          )
+                      }}
+                  />
+                </Box>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
+                    marginBottom: "1.5rem",
+                    gap: "8px"
+                  }}
+                >
+                    <label id='newPass' style={{ width: "10rem", fontSize: "14px"}}>New Password</label>
+                    <Controller
+                      name="new password"
+                      control={control}
+                      render={({ field }) => {
+                          return (
+                              <TextField 
+                                  id="newPass" 
+                                  variant="outlined"
+                                  {...field} 
+                                  type="password"
+                                  sx={{"& .MuiInputBase-input": { padding: "8px 6px"}}}
+                                  fullWidth
+                              />
+                          )
+                      }}
+                  />
+                </Box>
+
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "flex-start",
+                    alignItems: "flex-start",
+                    marginBottom: "2.5rem",
+                    gap: "8px"
+                  }}
+                >
+                    <label id='confirmNewPass' style={{ width: "10rem", fontSize: "14px"}}>Confirm New Password</label>
+                    <Controller
+                      name="confirm new password"
+                      control={control}
+                      render={({ field }) => {
+                          return (
+                              <TextField 
+                                  id="confirmNewPass" 
+                                  variant="outlined"
+                                  {...field} 
+                                  type="password"
+                                  sx={{ "& .MuiInputBase-input": { padding: "8px 6px"} }}
+                                  fullWidth
+                              />
+                          )
+                      }}
+                  />
+                </Box>
+
+                <Button
+                  type='submit'
+                  onClick={handleUpdateClick({
+                    vertical: 'bottom',
+                    horizontal: 'right',
+                  })}
+                  variant="contained"
+                  sx={{ height: "2.25rem", width: "80%", margin: "auto 10%", backgroundColor: "#0B4CCB" }}
+                >
+                  Update
+                </Button>
+          </Box>
+
+          <Box
+            sx={{
+              width: "66%"
+            }}
+          >
+            <Button
+              variant='outlined'
+              fullWidth
+              onClick={handleLogOut}
+            >
+              Logout
+            </Button>
+          </Box>
+        </Box>
+
+        <CustomizedSnackbar 
+          vertical={vertical} 
+          horizontal={horizontal} 
+          openSnack={openSnack}
+          handleClose={handleClose}
+          message="Your Password is Updated"
+        />
+
+        <Navbar />
       </Box>
     </Box>
   );

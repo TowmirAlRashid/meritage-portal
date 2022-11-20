@@ -27,6 +27,8 @@ import { data } from "../../data"
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import ProfileOrLogout from '../../components/profile';
+import TopHeader from '../../components/mobile/TopHeader';
+import Navbar from '../../components/mobile/Navbar';
 
 
 const drawerWidth = 200;
@@ -279,14 +281,18 @@ export default function MiniDrawer({ data }) {
           display: {
             lg: 'none',
             md: 'none',
-            sm: "flex",
-            xs: "flex"
+            sm: "block",
+            xs: "block"
           },
           width: "100%",
           height: "100vh" ,
           backgroundColor: "#F5F5F5",
         }}
-      ></Box>
+      >
+        <TopHeader />
+
+        <Navbar />
+      </Box>
     </Box>
   );
 }
