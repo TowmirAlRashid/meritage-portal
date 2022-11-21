@@ -408,8 +408,9 @@ export default function MiniDrawer() {
             flexDirection: "column",
             justifyContent: "flex-start",
             alignItems: "center",
-            height: `calc(100% - 6rem)`,
-            overflowY: "scroll"
+            height: "100%",
+            overflowY: "scroll",
+            pb: "7rem"
           }}
         >
           <Box

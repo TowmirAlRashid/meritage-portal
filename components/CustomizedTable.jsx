@@ -8,83 +8,10 @@ import Link from 'next/link'
 import EmptyData from './EmptyData';
 
 
-const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: "4px",
-    border: "1px solid rgba(0, 0, 0, 0.20)",
-    "&:hover": {
-        border: "1px solid rgba(0, 0, 0, 0.75)",
-    },
-    height: "2.5rem",
-    marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: "100%",
-    [theme.breakpoints.up('sm')]: {
-        marginLeft: theme.spacing(3),
-        width: 'auto',
-    },
-}));
 
-const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }));
-
-  const StyledInputBase = styled(InputBase)(({ theme }) => ({
-    color: 'rgba(0, 0, 0, 0.87)',
-    '& .MuiInputBase-input': {
-      padding: theme.spacing(1, 1, 1, 0),
-      // vertical padding + font size from searchIcon
-      paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-      transition: theme.transitions.create('width'),
-      width: '100%',
-      [theme.breakpoints.up('md')]: {
-        width: {
-            lg: 200,
-            md: 100
-        },
-      },
-    },
-  }));
-
-
-
-const CustomizedTable = ({ data, entries, setEntries }) => {
-
-  const [page, setPage] = React.useState(1);
-  const handlePageChange = (_, value) => {
-    setPage(value);
-  };
+const CustomizedTable = ({ data, entries, Search, SearchIconWrapper, StyledInputBase, query, setQuery, handleChange, page, setPage, handlePageChange }) => {
 
   const key = "eng_name"
-
-  const [query, setQuery] = useState('')
-//   const [foundEngagements, setFoundEngagements] = useState(data);
-
-//   const filterEngagements = (e) => {
-//     const keyword = e.target.value;
-
-//     if (keyword !== "") {
-//       const results = data?.filter((engagement) => {
-//         return engagement.eng_name.toLowerCase().startsWith(keyword.toLowerCase());
-//       });
-//       setFoundEngagements(results);
-//     } else {
-//         setFoundEngagements(data);
-//     }
-
-//     setQuery(keyword);
-//   };
-
-
-  const handleChange = (event) => {
-    setEntries(event.target.value);
-  };
 
   return (
     <Box
